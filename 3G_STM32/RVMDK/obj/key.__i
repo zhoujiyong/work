@@ -1,0 +1,1 @@
+-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I "D:\Program Files\Keil 4\ARM\INC" -I "D:\Program Files\Keil 4\ARM\INC\ST\STM32F10x" -o ".\obj\key.o" --omf_browse ".\obj\key.crf" --depend ".\obj\key.d" "..\src\Key\Key.c"

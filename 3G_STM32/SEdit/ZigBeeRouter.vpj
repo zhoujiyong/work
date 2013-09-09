@@ -1,0 +1,279 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    WorkingDir=".">
+    <Config
+        Name="Debug"
+        Type="cpp"
+        DebugCallbackName="gdb"
+        OutputFile="%bdZigBeeRouter"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                CaptureOutputWith="ProcessBuffer"
+                OutputExts="*.o"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='cc -c -g %i %defd -o "%bd%n.o" "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link">
+                <Exec CmdLine='cc -g -o "%o" %f %libs'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='vsdebugio -prog "%o"'/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%o"'/>
+            </Target>
+        </Menu>
+    </Config>
+    <Config
+        Name="Release"
+        Type="cpp"
+        DebugCallbackName="gdb"
+        OutputFile="%bdZigBeeRouter"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveCurrent"
+                OutputExts="*.o"
+                RunFromDir="%rw">
+                <Exec CmdLine='cc -c -O %i %defd -o "%bd%n.o" "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link">
+                <Exec CmdLine='cc -O -o "%o" %f %libs'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='vsdebugio -prog "%o"'/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%o"'/>
+            </Target>
+        </Menu>
+    </Config>
+    <Rules Name="Compile">
+        <Rule
+            InputExts="*.s"
+            OutputExts="*.o"
+            LinkObject="1">
+            <Exec CmdLine='as -o "%bd%n.o" "%f"'/>
+        </Rule>
+    </Rules>
+    <Files>
+        <Folder
+            Name="user"
+            Filters="">
+            <F N="../src/CFG.h"/>
+            <F N="../src/main.c"/>
+            <F N="../src/mytype.h"/>
+            <F N="../src/NVIC.c"/>
+            <F N="../src/publicFuc.c"/>
+            <F N="../src/publicFuc.h"/>
+            <F N="../src/RCC.c"/>
+            <F N="../src/stm32f10x_it.c"/>
+        </Folder>
+        <Folder
+            Name="lib"
+            Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+            <F N="../src/STM32Lib/core_cm3.c"/>
+            <F N="../src/STM32Lib/core_cm3.h"/>
+            <F N="../src/STM32Lib/misc.c"/>
+            <F N="../src/STM32Lib/misc.h"/>
+            <F N="../src/STM32Lib/stm32f10x.h"/>
+            <F N="../src/STM32Lib/stm32f10x_adc.c"/>
+            <F N="../src/STM32Lib/stm32f10x_adc.h"/>
+            <F N="../src/STM32Lib/stm32f10x_bkp.c"/>
+            <F N="../src/STM32Lib/stm32f10x_bkp.h"/>
+            <F N="../src/STM32Lib/stm32f10x_can.c"/>
+            <F N="../src/STM32Lib/stm32f10x_can.h"/>
+            <F N="../src/STM32Lib/stm32f10x_conf.h"/>
+            <F N="../src/STM32Lib/stm32f10x_crc.c"/>
+            <F N="../src/STM32Lib/stm32f10x_crc.h"/>
+            <F N="../src/STM32Lib/stm32f10x_dac.c"/>
+            <F N="../src/STM32Lib/stm32f10x_dac.h"/>
+            <F N="../src/STM32Lib/stm32f10x_dbgmcu.c"/>
+            <F N="../src/STM32Lib/stm32f10x_dbgmcu.h"/>
+            <F N="../src/STM32Lib/stm32f10x_dma.c"/>
+            <F N="../src/STM32Lib/stm32f10x_dma.h"/>
+            <F N="../src/STM32Lib/stm32f10x_exti.c"/>
+            <F N="../src/STM32Lib/stm32f10x_exti.h"/>
+            <F N="../src/STM32Lib/stm32f10x_flash.c"/>
+            <F N="../src/STM32Lib/stm32f10x_flash.h"/>
+            <F N="../src/STM32Lib/stm32f10x_fsmc.c"/>
+            <F N="../src/STM32Lib/stm32f10x_fsmc.h"/>
+            <F N="../src/STM32Lib/stm32f10x_gpio.c"/>
+            <F N="../src/STM32Lib/stm32f10x_gpio.h"/>
+            <F N="../src/STM32Lib/stm32f10x_i2c.c"/>
+            <F N="../src/STM32Lib/stm32f10x_i2c.h"/>
+            <F N="../src/STM32Lib/stm32f10x_iwdg.c"/>
+            <F N="../src/STM32Lib/stm32f10x_iwdg.h"/>
+            <F N="../src/STM32Lib/stm32f10x_pwr.c"/>
+            <F N="../src/STM32Lib/stm32f10x_pwr.h"/>
+            <F N="../src/STM32Lib/stm32f10x_rcc.c"/>
+            <F N="../src/STM32Lib/stm32f10x_rcc.h"/>
+            <F N="../src/STM32Lib/stm32f10x_rtc.c"/>
+            <F N="../src/STM32Lib/stm32f10x_rtc.h"/>
+            <F N="../src/STM32Lib/stm32f10x_sdio.c"/>
+            <F N="../src/STM32Lib/stm32f10x_sdio.h"/>
+            <F N="../src/STM32Lib/stm32f10x_spi.c"/>
+            <F N="../src/STM32Lib/stm32f10x_spi.h"/>
+            <F N="../src/STM32Lib/stm32f10x_tim.c"/>
+            <F N="../src/STM32Lib/stm32f10x_tim.h"/>
+            <F N="../src/STM32Lib/stm32f10x_usart.c"/>
+            <F N="../src/STM32Lib/stm32f10x_usart.h"/>
+            <F N="../src/STM32Lib/stm32f10x_wwdg.c"/>
+            <F N="../src/STM32Lib/stm32f10x_wwdg.h"/>
+            <F N="../src/STM32Lib/system_stm32f10x.c"/>
+            <F N="../src/STM32Lib/system_stm32f10x.h"/>
+        </Folder>
+        <Folder
+            Name="startup"
+            Filters="*.ico;*.cur;*.dlg">
+            <F N="../src/STM32Lib/StartUp/startup_stm32f10x_md.s"/>
+        </Folder>
+        <Folder
+            Name="OS"
+            Filters="*.bmp">
+            <F N="../src/UCOSII/os_dbg.c"/>
+            <F N="../src/UCOSII/os_flag.c"/>
+            <F N="../src/UCOSII/os_mbox.c"/>
+            <F N="../src/UCOSII/os_mem.c"/>
+            <F N="../src/UCOSII/os_mutex.c"/>
+            <F N="../src/UCOSII/os_q.c"/>
+            <F N="../src/UCOSII/os_sem.c"/>
+            <F N="../src/UCOSII/os_task.c"/>
+            <F N="../src/UCOSII/os_time.c"/>
+            <F N="../src/UCOSII/os_tmr.c"/>
+        </Folder>
+        <Folder
+            Name="OS_PORT"
+            Filters="">
+            <F N="../src/UCOSII/os_cfg.h"/>
+            <F N="../src/UCOSII/os_core.c"/>
+            <F N="../src/UCOSII/os_cpu.h"/>
+            <F N="../src/UCOSII/os_cpu_a.asm"/>
+            <F N="../src/UCOSII/os_cpu_c.c"/>
+            <F N="../src/UCOSII/ucos_ii.h"/>
+        </Folder>
+        <Folder
+            Name="Led"
+            Filters="">
+            <F N="../src/Leds/Leds.c"/>
+            <F N="../src/Leds/Leds.h"/>
+        </Folder>
+        <Folder
+            Name="Router"
+            Filters="">
+            <F N="../src/Router/Router.c"/>
+            <F N="../src/Router/Router.h"/>
+        </Folder>
+        <Folder
+            Name="Sensor"
+            Filters="">
+            <F N="../src/Sensor/ADC.c"/>
+            <F N="../src/Sensor/ADC.h"/>
+        </Folder>
+        <Folder
+            Name="USART"
+            Filters="">
+            <F N="../src/USART/UsartProtocol.c"/>
+            <F N="../src/USART/UsartProtocol.h"/>
+        </Folder>
+        <Folder
+            Name="RTC"
+            Filters="">
+            <F N="../src/RTC/RTC.c"/>
+            <F N="../src/RTC/RTC.h"/>
+        </Folder>
+        <Folder
+            Name="sample"
+            Filters="">
+            <F N="../src/Sample/sample.c"/>
+            <F N="../src/Sample/sample.h"/>
+        </Folder>
+        <Folder
+            Name="IrSend"
+            Filters="">
+            <F N="../src/IrSend/IrSend.c"/>
+            <F N="../src/IrSend/IrSend.h"/>
+        </Folder>
+        <Folder
+            Name="Lamp"
+            Filters="">
+            <F N="../src/Lamp/Lamp.c"/>
+            <F N="../src/Lamp/Lamp.h"/>
+        </Folder>
+        <Folder
+            Name="key"
+            Filters="">
+            <F N="../src/Key/Key.c"/>
+            <F N="../src/Key/Key.h"/>
+        </Folder>
+    </Files>
+</Project>
